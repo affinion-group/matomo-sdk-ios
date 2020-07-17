@@ -116,7 +116,9 @@ final public class MatomoTracker: NSObject {
     ///   - userAgent: An optional parameter for custom user agent.
     @objc convenience public init(siteId: String, baseURL: URL, userAgent: String? = nil) {
         let validSuffix = baseURL.absoluteString.hasSuffix("piwik.php") ||
-            baseURL.absoluteString.hasSuffix("matomo.php")
+            baseURL.absoluteString.hasSuffix("matomo.php") ||
+            baseURL.absoluteString.hasSuffix("analytics.php") ||
+            baseURL.absoluteString.containsString("analytics")
         assert(validSuffix, "The baseURL is expected to end in piwik.php or matomo.php")
         
         let queue = MemoryQueue()
